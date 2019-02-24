@@ -2,11 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,7 +17,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextArea layoutY="-1.0" prefHeight="181.0" prefWidth="200.0" />
+                  <TextArea fx:id="patternList" layoutY="-1.0" prefHeight="181.0" prefWidth="200.0" />
                </children></AnchorPane>
         </content>
       </TitledPane>
@@ -26,7 +25,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextArea prefHeight="180.0" prefWidth="200.0" />
+                  <TextArea fx:id="rulesList" prefHeight="180.0" prefWidth="200.0" />
                </children></AnchorPane>
         </content>
       </TitledPane>
@@ -34,7 +33,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextArea prefHeight="180.0" prefWidth="200.0" />
+                  <TextArea fx:id="approved" prefHeight="180.0" prefWidth="200.0" />
                </children></AnchorPane>
         </content>
       </TitledPane>
@@ -42,16 +41,16 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextArea layoutY="7.0" prefHeight="173.0" prefWidth="200.0" />
+                  <TextArea fx:id="declined" layoutY="7.0" prefHeight="173.0" prefWidth="200.0" />
                </children></AnchorPane>
         </content>
       </TitledPane>
       <ToolBar layoutX="11.0" layoutY="442.0" prefHeight="38.0" prefWidth="628.0">
          <items>
-            <RadioButton mnemonicParsing="false" text="Полное совпадение" />
-            <RadioButton mnemonicParsing="false" text="Частичное совпадение" />
-            <Button mnemonicParsing="false" text="Проверить" />
-            <ProgressBar prefHeight="18.0" prefWidth="175.0" progress="0.0" />
+            <RadioButton fx:id="full" mnemonicParsing="false" onMouseClicked="#checkSearchType" selected="true" text="Полное совпадение" />
+            <RadioButton fx:id="part" mnemonicParsing="false" onMouseClicked="#checkSearchType" text="Частичное совпадение" />
+            <Button fx:id="check" mnemonicParsing="false" onMouseClicked="#process" text="Проверить" />
+            <ProgressBar fx:id="progress" prefHeight="18.0" prefWidth="175.0" progress="0.0" />
             <Button mnemonicParsing="false" text="Очистить" />
          </items>
       </ToolBar>
@@ -59,30 +58,26 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <MenuButton layoutX="13.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="MenuButton">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
                   <Label layoutX="14.0" layoutY="14.0" text="Количество элементов:" />
-                  <Button layoutX="14.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Генерировать" />
-               </children></AnchorPane>
+                  <TextField fx:id="patternAmount" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="175.0" text="20" />
+                  <Button fx:id="generatePatterns" layoutX="13.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#generatePatterns" prefHeight="25.0" prefWidth="175.0" text="Генерировать" />
+                  <TextField fx:id="patternLength" layoutX="13.0" layoutY="78.0" prefHeight="25.0" prefWidth="175.0" text="6" />
+                  <Label layoutX="14.0" layoutY="61.0" text="Длина значения" />
+               </children>
+          </AnchorPane>
         </content>
       </TitledPane>
       <TitledPane animated="false" layoutX="227.0" layoutY="229.0" text="Генерация правил">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <MenuButton layoutX="13.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="MenuButton">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
                   <Label layoutX="13.0" layoutY="14.0" text="Количество элементов:" />
-                  <Button layoutX="14.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Генерировать" />
-               </children></AnchorPane>
+                  <TextField fx:id="rulesAmount" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="175.0" text="3" />
+                  <Button fx:id="generateRules" layoutX="13.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#generateRules" prefHeight="25.0" prefWidth="175.0" text="Генерировать" />
+                  <TextField fx:id="rulesLength" layoutX="13.0" layoutY="78.0" prefHeight="25.0" prefWidth="175.0" text="3" />
+                  <Label layoutX="13.0" layoutY="61.0" text="Длина значения" />
+               </children>
+          </AnchorPane>
         </content>
       </TitledPane>
    </children>
