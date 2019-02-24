@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IntellectualSystem.Controller">
+   <children>
+      <TitledPane animated="false" layoutX="14.0" layoutY="14.0" text="Исходная цепорчка действий">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea layoutY="-1.0" prefHeight="181.0" prefWidth="200.0" />
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="226.0" layoutY="14.0" text="База правил">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea prefHeight="180.0" prefWidth="200.0" />
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="437.0" layoutY="14.0" text="Разрешенные">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea prefHeight="180.0" prefWidth="200.0" />
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="437.0" layoutY="229.0" text="Запрещенные">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea layoutY="7.0" prefHeight="173.0" prefWidth="200.0" />
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <ToolBar layoutX="11.0" layoutY="442.0" prefHeight="38.0" prefWidth="628.0">
+         <items>
+            <RadioButton mnemonicParsing="false" text="Полное совпадение" />
+            <RadioButton mnemonicParsing="false" text="Частичное совпадение" />
+            <Button mnemonicParsing="false" text="Проверить" />
+            <ProgressBar prefHeight="18.0" prefWidth="175.0" progress="0.0" />
+            <Button mnemonicParsing="false" text="Очистить" />
+         </items>
+      </ToolBar>
+      <TitledPane animated="false" layoutX="14.0" layoutY="229.0" text="Генерация действий">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <MenuButton layoutX="13.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="MenuButton">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                  <Label layoutX="14.0" layoutY="14.0" text="Количество элементов:" />
+                  <Button layoutX="14.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Генерировать" />
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="227.0" layoutY="229.0" text="Генерация правил">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <MenuButton layoutX="13.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="MenuButton">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                  </MenuButton>
+                  <Label layoutX="13.0" layoutY="14.0" text="Количество элементов:" />
+                  <Button layoutX="14.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Генерировать" />
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</Pane>
