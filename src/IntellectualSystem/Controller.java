@@ -3,12 +3,16 @@ package IntellectualSystem;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.TreeMap;
+
 public class Controller {
     private Integer patternAmountValue = 0;
     private Integer rulesAmountValue = 0;
     private Integer patternLengthValue = 6;
     private Integer rulesLengthValue = 3;
-    private Boolean fullSearch;
+    private Boolean fullSearch = true;
     ToggleGroup searchTypeGroup;
     @FXML
     public TextField patternAmount;
@@ -113,10 +117,43 @@ public class Controller {
             generateRules();
         }
         progress.setProgress(0.5);
-        System.out.println(fullSearch.toString());
+        //System.out.println(fullSearch.toString());
         String[] patterns = patternList.getText().split("\n");
         String[] rules = rulesList.getText().split("\n");
-        Validator.validate(patterns, rules);
+        Validator validator = new Validator();
+        if (fullSearch) {
+            validator.setFull();
+        } else {
+            validator.setPart();
+        }
+        try {
+            validator.validate(patterns, rules);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        /**
+         * Append values to form
+         */
+        TreeMap approvedList = validator.getApproved();
+        TreeMap declinedList = validator.getDeclined();
+        approved.clear();
+        declined.clear();
+        for (Object item : approvedList.values()) {
+            approved.appendText(item.toString() + "\n");
+        }
+        for (Object item : declinedList.values()) {
+            declined.appendText(item.toString() + "\n");
+        }
+
         progress.setProgress(1);
+    }
+
+    public void clear()
+    {
+        approved.clear();
+        declined.clear();
+        patternList.clear();
+        rulesList.clear();
     }
 }
